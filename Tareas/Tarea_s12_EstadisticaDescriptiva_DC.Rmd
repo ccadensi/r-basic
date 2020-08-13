@@ -1,0 +1,65 @@
+---
+title: "Tarea - S12 Estadistica Descriptiva DC"
+author: "Cabeto"
+date: "20/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Tarea - S12 - Estadistica descriptiva con datos cuantitativos
+
+Carga el conjunto de datos de la carpeta data llamado grades.txt en R y responde a las siguientes preguntas
+```{r}
+grades = read.table("../data/grades.txt", header = TRUE) #Cargamos el data frame
+head(grades)
+summary(grades)
+```
+
+1. Calcula la media, la mediana y la moda redondeada a dos cifras decimales de las notas numéricas de los exámenes tanto de forma conjunta como por estudio universitario. ¿En qué grupo observamos la nota más alta? ¿Qué grupo está por encima de la media de estudiantes?
+```{r}
+mean(grades$nota, na.rm = TRUE )
+aggregate(nota~estudio, data = grades, FUN = mean)
+
+```
+¿En qué grupo observamos la nota más alta?
+
+Informática
+
+¿Qué grupo está por encima de la media de estudiantes?
+
+Informática y Mates
+
+2. ¿En qué grupo observamos más variación de notas? Justifica tu respuesta
+
+```{r}
+aggregate(nota~estudio, data = grades, FUN = summary)
+```
+
+
+3. ¿Hay mucha diferencia entre el grupo que has respondido en el ejercicio 1 y en el ejercicio 2? Intenta dar una explicación objetiva del suceso
+
+No es Mates
+
+
+4. Dibuja en un único gráfico los cuatro diagramas de caja, uno para cada grupo. Añade así mismo la nota media, pon nombre, título y color al gráfico para documentar el gráfico correctamente.
+
+```{r}
+boxplot(nota~estudio, data = grades, col = "lightblue",
+        xlab = "Estudio", ylab = "Notas")
+```
+
+
+5. ¿Observas algunos valores atípicos en el boxplot anterior? ¿A qué grupo pertence?
+
+Si, en Industrial, Informática y Telemática 
+
+6. Indica a partir del boxplot anterior en qué grupo observamos más variedad de notas.
+
+En Mates
+
+7. En base a todo lo anterior, ¿puedes afirmar de forma estadística que el examen de carrera ha ido mejor en algún estudio que en los demás?
+
+Si, en Mates se observan mejores notas, la media es de 4.22, está por encima de las demás
