@@ -3,14 +3,16 @@ title: "03-people"
 author: "Curso de Estadística Descriptiva"
 date: "24/12/2018"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 # Ejemplo de color de ojos y de pelo
 
 ```{r}
 HairEyeColor
+str(HairEyeColor)
+head(HairEyeColor)
 
 sum(HairEyeColor) -> total
 ```
@@ -23,6 +25,7 @@ prop.table(HairEyeColor, margin = c(1,2))
 ```
 
 ```{r}
+# aperm -> Me permite cambiar el orden de las columnas
 aperm(HairEyeColor, perm = c("Sex", "Hair", "Eye"))
 ```
 
