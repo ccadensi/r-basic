@@ -1,0 +1,66 @@
+---
+title: "Matrices"
+author: "Cabeto"
+date: "22/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Matrices
+
+```{r}
+M = matrix(1:12,nrow =4 )
+M
+M = matrix(1:12,nrow =3)
+M
+
+M = matrix(1:12,nrow =5)
+M
+M1=matrix(1,nrow=5,ncol = 6)
+M1
+```
+
+Combina matrices 
+```{r}
+rbind(M,c(1,2,3),c(-1,-3,-6))
+```
+
+Diagonal
+```{r}
+diag(c(1,2,3,4))
+diag(5,nrow = 3)
+```
+
+Submatrices
+
+```{r}
+M[2,3]
+M[c(2,3,5),1:2]
+```
+Funciones
+```{r}
+M
+nrow(M)
+ncol(M)
+dim(M)
+sum(M)
+prod(M)
+mean(M)
+colSums(M)
+rowSums(M)
+
+```
+
+```{r}
+colMeans(M)
+rowMeans(M)
+apply(M, MARGIN = 1, FUN = function(x){sqrt(sum(x^2))}) # Aplica la función a las filas (Margin=1)
+
+apply(M, MARGIN = 2, FUN = function(x){sqrt(sum(x^2))}) # Aplica la función a las columnas (Margin=2)
+
+apply(M, MARGIN = c(1,2), FUN = function(x){x^2}) # Aplica la función a todas las filas y columnas
+```
+
