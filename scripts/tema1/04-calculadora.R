@@ -44,8 +44,11 @@ NaN
 0/0
 
 2^50# = 1.1259e+15 = 1125900000000000 
+1125900000000000 
 
 2 ^(-15) # 3.051758e-05 = 0.00003051758
+0.00003051758
+
 
 c(2^30, 2^(-15), 1, 2, 3/2)
 
@@ -63,13 +66,13 @@ log(base=2, 32)
 
 abs(-pi)
 
-factorial(7)
+factorial(7) # x!
 
 factorial(4)
 
 factorial(0)
 
-choose(5, 3)
+choose(5, 3) # tuviera 5 platos y me quiero comer 3 de ellos, de cuantas formas lo puedo hacer (de 10)
 
 choose(3,5)
 
@@ -79,6 +82,7 @@ log(4^6, 4)
 
 choose(5,2)
 
+# Sin y cos usa los argumentos en radianes
 sin(60*pi/180)
 
 cos(60*pi/180)
@@ -99,8 +103,8 @@ acos(-8)
 
 print(sqrt(2),10)
 round(sqrt(2), 3)
-floor(sqrt(2))
-ceiling(sqrt(2))
+floor(sqrt(2)) # redondea hacia abajo
+ceiling(sqrt(2)) # redondea hacia arriba
 trunc(sqrt(2))
 
 sqrt(2)^2-2
@@ -114,14 +118,14 @@ print(pi, 22)
 #3.141592653589793115998
 #3.141592653589793238462
 
-round(1.25,1)
-round(1.35,1)
+round(1.25,1) # redondea a la cifra par
+round(1.35,1) # redondea a la cifra par
 round(sqrt(2),0)
 round(sqrt(2))
 
 round(digits = 5, sqrt(2))
 round(5, sqrt(2))
-
+signif(sqrt(2), digits = 6)
 
 floor(-3.45)
 ceiling(-3.45)
@@ -188,13 +192,15 @@ suma5 <- function(numero){
 
 suma5(3)
 
+ls() # lista todos los objetos () variables y funciones)
+
+rm(product) # borrar un objeto
+
 ls()
 
-rm(product)
+rm(list = ls()) # borra todos los objetos del entorno
 
-ls()
-
-rm(list = ls())
+# Numeros Complejos
 
 class(3+2i)
 
