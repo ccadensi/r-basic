@@ -1,0 +1,66 @@
+---
+title: "Tarea S8 - Graficos"
+author: "Cabeto"
+date: "1/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Tarea S8 - Graficos
+
+1. Con una sola instrucción, dibujad el gráfico de la función y=x^2−3x+30 entre −15 y 15. De título, poned “Una parábola”. De etiquetas, en el eje 0X poned, en formato matemático, "x"; y en el eje 0Y, introducid $y=x^2−3x+30$, también en formato matemático. Tenéis que utilizar la función curve()
+
+```{r}
+plot(-15:15,(-15:15)^2−3*(-15:15)+30, main = "Una parábola", ylab= expression(y^2−(3*y+30)),xlab="x")
+curve(x^2−3*x+30, lty = "dotted", col = "blue", add = TRUE)
+```
+
+
+2. Considerando lo que habéis obtenido en el ejercicio anterior y siendo y = f(x) = x^2−3x+30 e I = [-15:15], si en vez de utilizar la función curve(), utilizamos la función plot(), ¿es correcta la sentencia plot(f(I)) para representar la curva f en el intervalo I? En otras palabras, dan ambas sentencias la misma gráfica? Obviamente, en la sentencia plot(f(I)) se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, cread la función f en R y argumentad vuestra respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
+
+```{r}
+f = function(x){x^2−3*x+30}
+I = -15:15
+plot(f(I))
+```
+
+
+3. Dibuja un gráfico semilogarítmico de la función $y = 5\cdot 2^x$ entre -10 y 25. Utilizad la función curve(). Mostrad solo la etiqueta del eje 0Y, que ponga $y = 5\cdot 2^x$ en formato matemático.
+
+```{r}
+x = -10:25
+curve(5*2^x, ylab = expression(y = 5%*%2^x))
+```
+
+
+4. Dibuja el gráfico de la función y_1 = 3x utilizando la función curve(). Añade la curva y_2=-3x, entre -10 y 20. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponedle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesto". Añadid al gráfico un recuadro (con la esquina superior izquierda en el punto (13,10)) que indique que la función 3x es la azul y la -3x verde.
+
+```{r}
+
+curve(3*x, col ="blue", main = "2 Rectas", sub = "Dos rectas con pendiente opuesto",ylim=c(-3,3))
+x = -10:20
+curve(-3*x, col = "green",  add = TRUE ) 
+```
+
+
+5. Dad la instrucción que añada a un gráfico anterior la recta horizontal y = 0 de color rojo con un grosor de 5 puntos.
+
+```{r}
+curve(3*x, col ="blue", main = "2 Rectas", sub = "Dos rectas con pendiente opuesto",ylim=c(-3,3))
+x = -10:20
+curve(-3*x, col = "green",  add = TRUE ) 
+abline(h = 0, lty = "dotdash",lwd = 5, col = "red", add=TRUE)
+
+```
+
+
+6. Dad la instrucción que añada a un gráfico anterior la recta y = 2x+7 de color azul con un grosor de 2 puntos.
+
+```{r}
+plot(x)
+lines(x,2*x+7, col="blue",lwd=2)
+```
+
