@@ -1,0 +1,33 @@
+---
+title: "Datos Ordinales"
+author: "Cabeto"
+date: "16/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Datos Ordinales Ejemplo
+
+```{r}
+set.seed(2018)
+clientes <- sample(1:5, 50, replace = TRUE)
+clientes
+do_clientes <- ordered(clientes, levels = c(1,2,3,4,5))
+do_clientes
+fcli <- ftable(do_clientes) # frecuencias absolutas
+fcli
+faa_cli<-cumsum(fcli) # frecuencias absolutas acumuladas
+fr_cli<-prop.table(fcli) # frecuencias relativas
+fra_cli<-cumsum(prop.table(fcli)) # frecuencias relativas acumuladas
+fra1_cli<-prop.table(cumsum(fcli)) # frecuencias relativas acumuladas - error
+
+barplot(fcli, main = "Diagrama de Barras Frecuencias Absolutas")
+barplot(faa_cli, main = "Diagrama de Barras Frecuencias Absolutas Acumuladas")
+barplot(fr_cli, main = "Diagrama de Barras Frecuencias Relativas")
+barplot(fra_cli, main = "Diagrama de Barras Frecuencias Relativas Acumuladas")
+barplot(fra1_cli, main = "Diagrama de Barras Frecuencias Relativas Acumuladas - Error")
+```
+
