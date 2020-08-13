@@ -1,0 +1,179 @@
+---
+title: "SubVectores"
+author: "Cabeto"
+date: "22/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# SubVectores
+
+```{r}
+x = seq(3,50, by = 3.5)
+x
+
+```
+
+El elemento en la posicion 3
+```{r}
+x[3]
+```
+
+```{r}
+x[length(x)]
+x[length(x)-1]
+```
+
+todos los elementos, menos el que está en la posicion 3
+```{r}
+x[-3]
+```
+
+Los elementos de la posicion del 4 al 8 y al contrario
+```{r}
+x[4:8]
+x[8:4]
+```
+todo el vector al contrario
+
+```{r}
+x[length(x):1] 
+```
+
+Me muestra los que están en posicion par
+```{r}
+x[seq(2,length(x),by = 2)] 
+```
+
+Me muestra los que están en posicion impar
+```{r}
+x[-seq(2,length(x),by = 2)] 
+```
+
+Me muestra los últimos cuatro elementos del vector
+```{r}
+x[(length(x)-3):length(x)] 
+```
+Filtrar los números mayores de 20 y menores de 40
+```{r}
+x[x>20 & x<40] 
+```
+
+Filtrar los número pares
+```{r}
+x[x%%2==0] 
+```
+
+Filtrar los número impares
+```{r}
+x[x%%2==1] 
+```
+
+
+Me muestra un vector Booleano con los que cumplen la condicion
+```{r}
+x>30 
+x[x>30]
+```
+
+Me muestra los valores de un vector según la condicion de otro vector con la misma longitud
+```{r}
+x = c(1,7,4,2,4,8,9,2,0) 
+y = c(5,2,-3,-7,-1,4,-2,7,1)
+x[y>0]
+```
+
+Me muestra las posiciones de un vector que cumplan la condicion
+```{r}
+which(x>4)
+x[which(x>4)]
+which(x>2 & x<8)
+x[which(x>2 & x<8)]
+```
+
+El número más grande que está en la posicion
+```{r}
+which.max(x)
+which(x==max(x))
+x = c(1,7,9,2,4,8,9,2,9) 
+which.max(x) # me muestra la posicion del primer elemento más grande
+which(x==max(x)) # Me muestra la posicion donde están los elementos más grandes 
+```
+
+```{r}
+x=1:10
+x[3]
+x[3]= 32
+x
+x[11]
+x[11]=15
+x
+x[2:5]
+x[2:5]=x[2:5]+3
+x
+x[(length(x)-2):length(x)]=0
+x
+```
+
+Valores NA
+
+```{r}
+x[length(x)+5] = 9
+x
+
+```
+```{r}
+sum(x)
+prod(x)
+cumsum(x)
+mean(x)
+sum(x, na.rm = TRUE)
+mean(x, na.rm = TRUE)
+
+```
+
+NA no se puede comparar
+```{r}
+which(x==NA)
+is.na(x)
+which(is.na(x))
+x[which(is.na(x))]
+```
+
+Los valores NA por lo regular se cambian por el valor de la media
+```{r}
+y=x
+y
+y[is.na(y)]
+y[is.na(y)]=mean(y,na.rm=TRUE)
+y
+```
+
+```{r}
+x
+x[!is.na(x)]
+sum(x[!is.na(x)])
+mean(x[!is.na(x)])
+#cumsum(x,na.rm=TRUE)
+cumsum(x[!is.na(x)])
+```
+
+Borrar los NA (No es aconsejable)
+```{r}
+x
+na.omit(x)
+sum(na.omit(x))
+```
+
+```{r}
+x_clean = na.omit(x)
+x_clean
+attr(x_clean, "na.action") = NULL
+x_clean
+attr(x_clean, "class") = NULL
+x_clean
+```
+
