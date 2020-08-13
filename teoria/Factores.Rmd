@@ -1,0 +1,45 @@
+---
+title: "Factores"
+author: "Cabeto"
+date: "22/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## FACTORES
+
+```{r}
+nombres = c("Juan","Carlos","Antonio","Ricardo","Maria","Maria","Carlos")
+nombres.factor=factor(nombres. labels = "Nombre")
+nombres.factor
+
+```
+
+```{r}
+gender = c("M","H","H","M","M","M","M","H","H")
+gender.fact = factor(gender)
+gender.fact
+gender.fact2 = as.factor(gender)
+gender.fact2
+gender.fact3 = factor(gender, levels = c("M","H","B"), labels = c("Mujer","Hombre","Hermafrodita"))
+gender.fact3
+levels(gender.fact3)
+levels(gender.fact3) = c("Femenino","Masculino","Hibrido" )
+gender.fact3
+```
+```{r}
+notas = c(1,4,3,2,2,2,4,5,1,3,4,3,3,2)
+notas
+notas.factor = factor(notas)
+notas.factor
+levels(notas.factor)
+levels(notas.factor) = c("Suspendido","Suficiente","Bueno","Notable","Excelente")
+notas.factor
+levels(notas.factor) = c("Suspendido","Aprobado","Aprobado","Aprobado","Aprobado") # Agrupa
+notas.factor
+ordered(notas, labels = c("Sus","Suf","Bue","Not","Exc"))
+```
+
