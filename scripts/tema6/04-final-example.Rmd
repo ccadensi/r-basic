@@ -49,6 +49,11 @@ barplot(prop.table(colSums(data)), ylim = c(0, 0.4),
         main = "Frecuencias relativas del color de ojos",
         col = c("burlywood4", "lightblue", "orange3", "lightgreen")
         )
+
+barplot(prop.table(rowSums(data)), ylim = c(0, 0.6),
+        main = "Frecuencias relativas del color de Cabello",
+        col = c("black", "burlywood4", "red", "yellow")
+        )
 ```
 
 ## Frecuencias relativas globales y marginales
@@ -64,7 +69,7 @@ barplot(prop.table(data, margin = 1), beside = TRUE,
         main = "Frecuencias relativas del color de pelo\n para cada color de ojo.")
 
 
-
+# Se hace la Traspuesta 
 barplot(t(prop.table(data, margin = 2)), beside = TRUE,
         legend.text = TRUE, ylim = c(0, 0.6),
         col = c("burlywood4", "lightblue", "orange3", "lightgreen"), 
