@@ -1,0 +1,133 @@
+---
+title: "Tarea - S10 - Frecuencias Relativas"
+author: "Cabeto"
+date: "14/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(MASS)
+df <- birthwt
+```
+
+Preguntas de esta tarea
+1. Utiliza str() y head() para explorar la estructura, y con help(), mirar el significado de cada variable.
+
+```{r}
+str(df)
+head(df)
+#help(birthwt)
+```
+This data frame contains the following columns:
+
+low : indicator of birth weight less than 2.5 kg.
+
+age : mother's age in years.
+
+lwt : mother's weight in pounds at last menstrual period.
+
+race : mother's race (1 = white, 2 = black, 3 = other).
+
+smoke : smoking status during pregnancy.
+
+ptl : number of previous premature labours.
+
+ht : history of hypertension.
+
+ui : presence of uterine irritability.
+
+ftv : number of physician visits during the first trimester.
+
+bwt : birth weight in grams.
+
+
+2. Calcula una tabla de frecuencias relativas marginales de los pares (raza de la madre, peso inferior a 2.5 kg o no) que permita ver si la raza de la madre influye en el peso del bebé.
+```{r}
+#t_df <- apply(df, MARGIN = 2, FUN = table)
+t_df <- table(df[c(1,4)])
+t_df
+```
+ 
+
+3, Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.
+```{r}
+plot(t_df, col = c("lightpink"), main = "Diagrama de Mosaico")
+```
+
+
+4, Dibuja un diagrama bidimensional de barras, con las barras organizadas en bloques, que permita visualizar la información de los ejercicios anteriores. Aprovecha para nombres adecuados a los bloques, colores a las barras, y añadir una leyenda que explique qué representa cada barra.
+```{r}
+barplot(prop.table(t_df), ylim = c(0, 0.9),
+        main = "Frecuencias relativas de la raza de la mujer",
+        col = c("lightblue", "lightpink")
+        ,  names.arg = c("Blanca", "Negra", "Otro")
+        
+        )
+legend(x = "topright", legend = c("Bajo Peso","Peso Normal"), fill = c("lightblue", "lightpink"), 
+       title = "Peso Bebe")
+```
+
+
+5. ¿Se puede obtener alguna conclusión de la tabla y el diagrama de barras anterior? Argumenta tu respuesta
+
+El 39% de las mujeres blancas tienen bebes de bajo peso 
+```{r}
+prop.table(t_df)
+```
+
+
+6. Repite los cuatro ejercicios anteriores para los pares (madre fumadora o no, peso inferior a 2.5 kg o no) y para los pares (madre hipertensa o no, peso inferior a 2.5 kg o no.
+```{r}
+
+t_df <- table(df[c(1,5)])
+plot(t_df, col = c("lightpink"), main = "Diagrama de Mosaico")
+barplot(prop.table(t_df), ylim = c(0, 0.9),
+        main = "Frecuencias relativas de la mujer Fumadora",
+        col = c("lightblue", "lightpink")
+        ,  names.arg = c("Fumadora", "No Fumadora")
+        
+        )
+legend(x = "topright", legend = c("Bajo Peso","Peso Normal"), fill = c("lightblue", "lightpink"), 
+       title = "Peso Bebe")
+prop.table(t_df)
+```
+El 45% de las mujeres fumadores tienen bebes de bajo peso.
+
+
+```{r}
+
+t_df <- table(df[c(1,7)])
+plot(t_df, col = c("lightpink"), main = "Diagrama de Mosaico")
+barplot(prop.table(t_df), ylim = c(0, 0.9),
+        main = "Frecuencias relativas de la mujer hipertensa",
+        col = c("lightblue", "lightpink")
+        ,  names.arg = c("hipertensa", "No hipertensa")
+        
+        )
+legend(x = "topright", legend = c("Bajo Peso","Peso Normal"), fill = c("lightblue", "lightpink"), 
+       title = "Peso Bebe")
+prop.table(t_df)
+
+```
+El 66% de las mujeres Hipertensas tienen bebes de bajo peso.
+
+
+7. Calcula una tabla de frecuencias relativas marginales de las ternas (raza de la madre, madre fumadora o no, peso inferior a 2.5 kg o no) que permita ver si la raza de la madre y su condición de fumadora o no fumadora influyen en el peso del bebé.
+
+```{r}
+
+t_df <- ftable(prop.table(table(df[c(1,4,5)])))
+t_df
+
+```
+El 21% de las mujeres blancas fumadoras tienen bebes de bajo peso
+
+8. Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.
+
+```{r}
+plot(prop.table(table(df[c(1,4,5)])), col = c("lightpink"), main = "Diagrama de Mosaico")
+```
+
