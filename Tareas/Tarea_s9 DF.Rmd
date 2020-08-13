@@ -1,0 +1,162 @@
+---
+title: "Tarea DF"
+author: "Cabeto"
+date: "5/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## DATA FRAME
+```{r}
+df = read.csv("medals.csv")
+str(df)
+```
+
+¿Cuantos deportistas aparecen en el data frame?
+```{r}
+nrow(df)
+```
+
+¿Cuantos han ganado medallas de oro, cuantos de plata y cuantos de bronce?
+
+ORO :
+```{r}
+#ORO
+nrow(df[df$Medal=="Gold",])
+
+```
+
+Plata :
+```{r}
+#Plata
+nrow(df[df$Medal=="Silver",])
+```
+
+Bronce :
+```{r}
+#Bronce
+nrow(df[df$Medal=="Bronze",])
+```
+¿En cuantos lugares se han hecho olimpiadas de invierno?
+
+```{r}
+ff = factor(df$NOC)
+length(levels(ff))
+```
+
+
+¿Cuantos hombres y cuantas mujeres hay?
+
+Hombres:
+```{r}
+fg<-factor(df$Event.gender)
+fgM<-fg[fg=='M']
+length(fgM)
+```
+
+Mujeres:
+```{r}
+fgW<-fg[fg=='W']
+length(fgW)
+```
+
+
+No definido:
+```{r}
+fgX<-fg[fg=='X']
+length(fgX)
+```
+¿En qué año participaron más deportistas?
+
+```{r}
+#df %>% count(Year, sort = TRUE)
+```
+df %>% count(Year, sort = TRUE)
+   Year   n
+   
+1  2006 252
+
+2  2002 234
+
+3  1998 205
+
+4  1994 183
+
+5  1992 171
+
+6  1988 138
+
+7  1984 117
+
+8  1980 115
+
+9  1976 111
+
+10 1968 106
+
+11 1972 105
+
+12 1964 103
+
+13 1960  81
+
+14 1956  72
+
+15 1948  68
+
+16 1952  67
+
+17 1936  51
+
+18 1924  49
+
+19 1932  42
+
+20 1928  41
+
+
+El campo NOC indica el país del ganador de la medalla. ¿Qué país puede presumir de haber ganado más medallas de oro en los juegos de invierno entre 1960 y 1996?
+
+```{r}
+df1 = read.csv("medals.csv")
+str(df1)
+#nrow(df[df$Medal=="Gold",])
+#df1 %>% filter(Year >= 1960 & Year <= 1996 & Medal=="Gold") %>% count(NOC, sort = TRUE)
+```
+
+df1 %>% filter(Year >= 1960 & Year <= 1996 & Medal=="Gold") %>% count(NOC, sort = TRUE)
+   NOC  n
+   
+1  URS 71
+
+2  NOR 40
+
+3  GDR 39
+
+4  USA 34
+
+5  AUT 25
+
+Respuesta de un compañero
+
+```{r}
+subset(df1, Year >= 1960 & Year <= 1996, select = c(1,5,8)) -> segmentado
+
+rownames(segmentado) = 1:nrow(segmentado)
+segmentado
+segmentado[segmentado$Medal == "Gold", ] -> segmentadoro
+table(segmentadoro$NOC)
+```
+
+Mejorado
+
+```{r}
+subset(df1, Year >= 1960 & Year <= 1996 & Medal == "Gold", select = c(1,5,8)) -> seg
+rownames(seg) = 1:nrow(seg)
+seg1<-sort(table(seg$NOC), decreasing = TRUE)
+seg1["URS"]
+```
+
