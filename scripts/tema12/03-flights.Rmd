@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(reticulate)
+use_python("C:/Users/User/anaconda3")
 ```
 
 ## Vuelos de NYC
