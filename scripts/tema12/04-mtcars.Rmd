@@ -92,7 +92,7 @@ plt.text(x=0.8, y = mtcars["mpg"].quantile(0.75), s = "3r cuartil")
 
 plt.text(x=0.9, y = mtcars["mpg"].quantile(0), s = "Min")
 plt.text(x=0.9, y = mtcars["mpg"].quantile(1), s = "Max")
-
+# RIC -> Radio Inter Cuantilico
 plt.text(x = 0.7, y = mtcars["mpg"].quantile(0.5), s = "RIC", rotation = 90, size = 25)
 plt.show()
 ```
@@ -104,8 +104,9 @@ from ggplot import mtcars
 
 print(mtcars["mpg"].var())
 print(mtcars["mpg"].std())
-
+# Desviacion mediana absoluta
 mad = abs(mtcars["mpg"]-mtcars["mpg"].median())
+# Valor en el mundo de la estadistica
 k = 1.4826
 print(mad.median()*k)
 ```
