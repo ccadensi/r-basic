@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 library(reticulate)
-use_python("/anaconda3/bin/python")
+use_python("C:/Users/User/anaconda3")
 ```
 
 # Pokemon (Py -> R)
@@ -49,4 +49,3 @@ summary(pokemon2)
 ```{python}
 print(r.pokemon2.head())
 ```
-
