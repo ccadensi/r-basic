@@ -22,8 +22,8 @@ n = 30
 p = 0.6
 plot(0:n, dbinom(0:n, size = n, prob = p))
 plot(0:n, pbinom(0:n, size = n, prob = p))
-qbinom(0.5, n, p)
-qbinom(0.25, n, p)
+qbinom(0.5, n, p) # Mediana
+qbinom(0.25, n, p) # Primer quartil
 hist(rbinom(100000, n, p), breaks = 0:30)
 ```
 
